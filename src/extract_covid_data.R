@@ -2,8 +2,10 @@ library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
 library(here, quietly = TRUE)
 library(readxl, quietly = TRUE)
 
-load_covid_data_ms <- function(xlsx_file, level = NULL) {
-  res <- read_xlsx(xlsx_file, guess = 10^4) %>%
+# Download xslx file at https://covid.saude.gov.br/
+
+load_covid_data_ms <- function(file_xlsx, level = NULL) {
+  covid_data <- read_xlsx(file_xlsx, guess = 10^4) %>%
     mutate(
       populacaoTCU2019 = suppressWarnings(as.integer(populacaoTCU2019)),
       incidencia100k = round(10^5 * casosAcumulado / populacaoTCU2019, 2),
@@ -12,14 +14,14 @@ load_covid_data_ms <- function(xlsx_file, level = NULL) {
     arrange(estado, municipio, data)
   
   if (!is.null(level)) {
-    res <- switch(level,
-                  country = extract_covid_data_by_country(res),
-                  state = extract_covid_data_by_state(res),
-                  city = extract_covid_data_by_city(res),
-                  res)
+    covid_data <- switch(level,
+                  country = extract_covid_data_by_country(covid_data),
+                  state = extract_covid_data_by_state(covid_data),
+                  city = extract_covid_data_by_city(covid_data),
+                  covid_data)
   }
   
-  return(res)
+  return(covid_data)
 }
 
 extract_covid_data_by_country <- function(covid_data) {
@@ -60,7 +62,7 @@ main <- function(argv) {
 
   covid_data <- load_covid_data_ms(xlsx_file, agg_level)
   write.csv(covid_data, output_file, row.names = FALSE, quote = FALSE)
-  print(paste("Data written to", output_file))
+  message("Data written to ", output_file)
 }
 
 if (!interactive()) {
