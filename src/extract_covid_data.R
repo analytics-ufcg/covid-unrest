@@ -1,5 +1,6 @@
 library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
 library(here, quietly = TRUE)
+library(readr, quietly = TRUE)
 library(readxl, quietly = TRUE)
 
 # Download xslx file at https://covid.saude.gov.br/
@@ -61,7 +62,7 @@ main <- function(argv) {
   )
 
   covid_data <- load_covid_data_ms(xlsx_file, agg_level)
-  write.csv(covid_data, output_file, row.names = FALSE, quote = FALSE)
+  write_csv(covid_data, output_file, na = "")
   message("Data written to ", output_file)
 }
 
