@@ -3,8 +3,13 @@ library(here, quietly = TRUE)
 library(readxl, quietly = TRUE)
 
 load_covid_data_ms <- function(xlsx_file, level = NULL) {
-  res <- read_xlsx(xlsx_file, guess_max = 100000) %>%
-    arrange(data)
+  res <- read_xlsx(xlsx_file, guess = 10^4) %>%
+    mutate(
+      populacaoTCU2019 = suppressWarnings(as.integer(populacaoTCU2019)),
+      incidencia100k = round(10^5 * casosAcumulado / populacaoTCU2019, 2),
+      mortalidade100k = round(10^5 * obitosAcumulado / populacaoTCU2019, 2)
+    ) %>%
+    arrange(estado, municipio, data)
   
   if (!is.null(level)) {
     res <- switch(level,
