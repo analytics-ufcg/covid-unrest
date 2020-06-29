@@ -31,7 +31,7 @@ main <- function(argv = NULL) {
   )
   
   output_file <- ifelse(length(argv) >= 2, argv[2],
-                        here::here("data", "ready", "measures-stringency-week.csv"))
+                        here::here("data", "ready", "measures-stringency.csv"))
   
   measures_raw <- load_measures_data(input_file)
   measures_ready <- process_measures(measures_raw)
