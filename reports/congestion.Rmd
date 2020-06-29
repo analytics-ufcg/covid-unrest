@@ -1,0 +1,43 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+```{r}
+congestion = read_csv(here::here("data/ready/congestion.csv"))
+```
+
+```{r}
+congestion %>% 
+  skimr::skim()  
+```
+
+
+```{r}
+congestion %>% 
+  filter(region_type == "state", percentage_congestion_change <= 100) %>% 
+  ggplot(aes(x = week_number, y = percentage_congestion_change)) + 
+  facet_wrap(~ reorder(region_name, -percentage_congestion_change)) + 
+  geom_line() + 
+  theme_minimal() + 
+  labs(title = "Percent change in congestion, filtering < 100")
+
+ggsave(here::here("reports", "congestion-states.png"), width = 8, height = 6)
+```
+
+```{r}
+congestion %>% 
+  filter(region_type == "city", percentage_congestion_change <= 100) %>% 
+  ggplot(aes(x = week_number, y = percentage_congestion_change)) + 
+  facet_wrap(~ reorder(region_name, -percentage_congestion_change)) + 
+  geom_line() + 
+  theme_minimal() + 
+  labs(title = "Percent change in congestion, filtering < 100")
+
+ggsave(here::here("reports", "congestion-cities.png"), width = 6, height = 6)
+```
+

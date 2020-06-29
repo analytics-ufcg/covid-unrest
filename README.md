@@ -35,3 +35,15 @@ Type and details [here](https://docs.google.com/spreadsheets/d/1uqR7Et1E2caMko_n
 **Processing**: `src/extract_measures_data.R`
 
 **Variables**: uf,city_name,city_code,date,stringency_index
+
+### Degree of social isolation
+
+Daily percentage change wrt March 2-8th.
+
+**Source**: https://github.com/EL-BID/IDB-IDB-Invest-Coronavirus-Impact-Dashboard 
+
+**Raw data**: `data/raw/waze_idb.csv`
+
+**Processing**: `src/extract_congestion_data.R`
+
+**Variables**: week_number,region_type,region_name,ratio_congestion,percentage_congestion_change
