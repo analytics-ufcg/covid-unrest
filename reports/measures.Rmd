@@ -1,0 +1,47 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+```{r}
+stringency = read_csv(here::here("data/ready/measures-stringency-week.csv"))
+```
+
+```{r}
+stringency %>% 
+  skimr::skim()  
+```
+
+Data periodicity:
+
+```{r}
+stringency %>% 
+  distinct(date)
+```
+
+```{r}
+stringency %>% 
+  filter(city_code == "STATE_GOV") %>% 
+  ggplot(aes(x = date, y = stringency_index)) + 
+  facet_wrap(~ reorder(uf, -stringency_index)) + 
+  geom_line() + 
+  theme_minimal()
+
+ggsave(here::here("reports", "stringency_index-states.png"), width = 8, height = 6)
+```
+
+```{r}
+stringency %>% 
+  filter(city_code != "STATE_GOV") %>% 
+  ggplot(aes(x = date, y = stringency_index)) + 
+  facet_wrap(~ reorder(city_name, -stringency_index)) + 
+  geom_line() + 
+  theme_minimal()
+
+ggsave(here::here("reports", "stringency_index-cities.png"), width = 6, height = 6)
+```
+
