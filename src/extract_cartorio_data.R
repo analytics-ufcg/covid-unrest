@@ -52,6 +52,9 @@ aggregate_deaths_per_epiweek <- function(cartorio_data, group_causes = TRUE,
       pivot_wider(names_from = c(cause, year),
                   names_glue = "{.value}_{cause}_{year}",
                   values_from = c(deaths, new_deaths)) %>%
+      mutate(
+        deaths_total_dif = deaths_total_2020 - deaths_total_2019,
+        new_deaths_total_dif = new_deaths_total_2020 - new_deaths_total_2019) %>%
       select(state, epidemiological_week_2020, first_day_epiweek_2020,
              sort(tidyselect::peek_vars()))
   }
