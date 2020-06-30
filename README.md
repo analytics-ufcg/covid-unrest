@@ -20,7 +20,7 @@ Type and details [here](https://docs.google.com/spreadsheets/d/1uqR7Et1E2caMko_n
 
 **Source**: https://brasil.io/dataset/covid19/obito_cartorio/?format=csv 
 
-**Raw data**: `data/raw/obito_cartorio.csv.gz`
+**Raw data**: `data/raw/obito_cartorio.csv`
 
 **Processing**: `src/extract_cartorio_data.R`
 
