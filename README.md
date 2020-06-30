@@ -18,7 +18,7 @@ Type and details [here](https://docs.google.com/spreadsheets/d/1uqR7Et1E2caMko_n
 
 ### Excess/SARS deaths data
 
-**Source**: https://data.brasil.io/dataset/covid19/obito_cartorio.csv.gz 
+**Source**: https://brasil.io/dataset/covid19/obito_cartorio/?format=csv 
 
 **Raw data**: `data/raw/obito_cartorio.csv.gz`
 
