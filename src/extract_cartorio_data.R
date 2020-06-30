@@ -1,49 +1,67 @@
 library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
 library(here, quietly = TRUE)
-library(purrr, quietly = TRUE)
+library(lubridate, quietly = TRUE, warn.conflicts = FALSE)
 library(readr, quietly = TRUE)
 library(tidyr, quietly = TRUE)
 
-# Download file at https://data.brasil.io/dataset/covid19/obito_cartorio.csv.gz
+# Download file at https://brasil.io/dataset/covid19/obito_cartorio/?format=csv
 
 load_cartorio_data <- function(file) {
-  cartorio <- read_csv(file, col_types = cols())
+  cartorio <- read_csv(file, col_types = cols(), guess_max = 10^4)
   return(cartorio)
 }
 
-aggregate_deaths_per_epiweek <- function(cartorio_data) {
-  agg_vars_funs <- list(.vars = list(vars(date),
-                                     vars(starts_with("new")),
-                                     vars(starts_with("deaths"))),
-                        .funs = list(min, sum, max))
+aggregate_deaths_per_epiweek <- function(cartorio_data, group_causes = TRUE,
+                                         wider_output = TRUE) {
+  cartorio_longer <- cartorio_data %>%
+    select(date, epidemiological_week_2020, state,
+           deaths_covid19_2020 = deaths_covid19, starts_with("deaths_")) %>%
+    pivot_longer(starts_with("deaths_"), names_to = c("cause", "year"),
+                 names_pattern = "deaths_(.*)_(.*)",
+                 names_transform = list(year = as.integer),
+                 values_to = "deaths") %>%
+    group_by(state, year, cause) %>%
+    arrange(date) %>%
+    tidyr::fill(deaths) %>% # fill NAs with previous non-NA value
+    replace_na(replace = list(deaths = 0)) # initial NAs as zero
   
-  cartorio_week_2019 <- agg_vars_funs %>%
-    pmap(~ cartorio_data %>%
-           select(state, date, ends_with("2019")) %>%
-           group_by(state, epidemiological_week = epidemiological_week_2019) %>%
-           summarise_at(.x, .y)) %>%
-    reduce(inner_join, by = c("state", "epidemiological_week")) %>%
-    rename(first_day_epiweek_2019 = date)
+  if (group_causes) {
+    cartorio_longer <- cartorio_longer %>%
+      ungroup() %>%
+      mutate(cause = case_when(
+        cause == "total" ~ "total",
+        cause == "covid19" ~ "covid19",
+        cause %in% c("sars", "pneumonia", "respiratory_failure",
+                     "indeterminate") ~ "other_respiratory",
+        cause %in% c("septicemia", "others") ~ "others",
+        TRUE ~ NA_character_)) %>%
+      group_by(state, year, date, epidemiological_week_2020, cause) %>%
+      summarise(deaths = if_else(all(is.na(deaths)), NA_real_,
+                                 sum(deaths, na.rm = TRUE)))
+  }
   
-  cartorio_week_2020 <- agg_vars_funs %>%
-    pmap(~ cartorio_data %>%
-           select(state, date, ends_with("2020")) %>%
-           group_by(state, epidemiological_week = epidemiological_week_2020) %>%
-           summarise_at(.x, .y)) %>%
-    reduce(inner_join, by = c("state", "epidemiological_week")) %>%
-    rename(first_day_epiweek_2020 = date)
+  cartorio_week <- cartorio_longer %>%
+    group_by(state, year, cause, epidemiological_week_2020) %>%
+    summarise(first_day_epiweek_2020 = min(date),
+              deaths = max(deaths)) %>%
+    arrange(.by_group = TRUE) %>%
+    mutate(new_deaths = deaths - pmax(0, lag(deaths), na.rm = TRUE))
 
-  cartorio_week <- cartorio_week_2019 %>%
-    full_join(cartorio_week_2020, by = c("state", "epidemiological_week")) %>%
-    select(state, epidemiological_week, first_day_epiweek_2019,
-           first_day_epiweek_2020, sort(names(.)))
+  if (wider_output) {
+    cartorio_week <- cartorio_week %>%
+      pivot_wider(names_from = c(cause, year),
+                  names_glue = "{.value}_{cause}_{year}",
+                  values_from = c(deaths, new_deaths)) %>%
+      select(state, epidemiological_week_2020, first_day_epiweek_2020,
+             sort(tidyselect::peek_vars()))
+  }
   
   return(cartorio_week)
 }
 
 main <- function(argv = NULL) {
   input_file <- ifelse(length(argv) >= 1, argv[1],
-                                here("data", "raw", "obito_cartorio.csv.gz"))
+                                here("data", "raw", "obito_cartorio.csv"))
   output_file <- ifelse(length(argv) >= 2, argv[2],
                         here("data", "ready", "cartorio-deaths-week.csv"))
   
