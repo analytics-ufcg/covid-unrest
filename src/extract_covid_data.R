@@ -8,6 +8,7 @@ library(readxl, quietly = TRUE)
 load_covid_data_ms <- function(file_xlsx, level = NULL) {
   covid_data <- read_xlsx(file_xlsx, guess = 10^4) %>%
     mutate(
+      data = as.Date(data),
       populacaoTCU2019 = suppressWarnings(as.integer(populacaoTCU2019)),
       incidencia100k = round(10^5 * casosAcumulado / populacaoTCU2019, 2),
       mortalidade100k = round(10^5 * obitosAcumulado / populacaoTCU2019, 2)
@@ -16,10 +17,10 @@ load_covid_data_ms <- function(file_xlsx, level = NULL) {
   
   if (!is.null(level)) {
     covid_data <- switch(level,
-                  country = extract_covid_data_by_country(covid_data),
-                  state = extract_covid_data_by_state(covid_data),
-                  city = extract_covid_data_by_city(covid_data),
-                  covid_data)
+                         country = extract_covid_data_by_country(covid_data),
+                         state = extract_covid_data_by_state(covid_data),
+                         city = extract_covid_data_by_city(covid_data),
+                         covid_data)
   }
   
   return(covid_data)
