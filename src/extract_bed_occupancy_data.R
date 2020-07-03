@@ -11,18 +11,18 @@ Sys.setlocale(locale = "pt_BR")
 
 extract_transform_sheet <- function(sheet_id, mandacaru_xlsx) {
   res <- read_excel(mandacaru_xlsx, sheet = sheet_id) %>%
-    rename(metrica = 1) %>%
-    mutate(metrica = case_when(
-      str_detect(metrica, fixed("C1a")) ~ "taxa_ocupacao_uti",
-      str_detect(metrica, fixed("C1b")) ~ "taxa_ocupacao_enfermaria",
-      str_detect(metrica, fixed("C2a")) ~ "crescimento_casos_semanal",
-      str_detect(metrica, fixed("C2b")) ~ "crescimento_obitos_semanal",
-      str_detect(metrica, fixed("C3a")) ~ "indice_isolamento_medio",
+    rename(metric = 1) %>%
+    mutate(metric = case_when(
+      str_detect(metric, fixed("C1a")) ~ "icu_beds_occupancy",
+      str_detect(metric, fixed("C1b")) ~ "hospital_beds_occupancy",
+      str_detect(metric, fixed("C2a")) ~ "cases_increase_week",
+      str_detect(metric, fixed("C2b")) ~ "deaths_increase_week",
+      str_detect(metric, fixed("C3a")) ~ "social_isolation_index",
       TRUE ~ NA_character_)) %>%
-    filter(!is.na(metrica)) %>%
-    mutate_at(vars(-metrica), as.double) %>%
-    pivot_longer(-metrica, names_to = "estado") %>% 
-    pivot_wider(id_cols = "estado", names_from=metrica, values_from=value)
+    filter(!is.na(metric)) %>%
+    mutate_at(vars(-metric), as.double) %>%
+    pivot_longer(-metric, names_to = "state") %>% 
+    pivot_wider(id_cols = state, names_from = metric, values_from = value)
     
     return(res)
 }
@@ -33,21 +33,21 @@ extract_transform_mandacaru_data <- function(mandacaru_xlsx) {
   names(sheet_ids) <- sheet_names
   
   res <- sheet_ids %>%
-    map_df(extract_transform_sheet, mandacaru_xlsx, .id = "data") %>%
-    mutate(data = parse_date(paste(data, "2020"), format = "%d %b %Y"))
+    map_df(extract_transform_sheet, mandacaru_xlsx, .id = "date") %>%
+    mutate(date = parse_date(paste(date, "2020"), format = "%d %b %Y"))
   
   return(res)
 }
 
 write_bed_occupancy <- function(mandacaru_data, output_csv) {
   mandacaru_data %>%
-    filter(data == max(data)) %>%
-    select(data, estado, taxa_ocupacao_uti, taxa_ocupacao_enfermaria) %>%
+    filter(date == max(date)) %>%
+    select(date, state, icu_beds_occupancy, hospital_beds_occupancy) %>%
     transmute(
-      data,
-      estado,
-      taxa_ocupacao_uti = round(taxa_ocupacao_uti / 100, 3),
-      taxa_ocupacao_enfermaria = round(taxa_ocupacao_enfermaria / 100, 3)) %>%
+      date,
+      state,
+      icu_beds_occupancy = round(icu_beds_occupancy / 100, 3),
+      hospital_beds_occupancy = round(hospital_beds_occupancy / 100, 3)) %>%
     write_csv(output_csv)
 }
 

@@ -1,4 +1,4 @@
-data,estado,taxa_ocupacao_uti,taxa_ocupacao_enfermaria
+date,state,icu_beds_occupancy,hospital_beds_occupancy
 2020-06-28,AC,0.889,0.875
 2020-06-28,AL,0.841,0.48
 2020-06-28,AM,0.609,0.395
