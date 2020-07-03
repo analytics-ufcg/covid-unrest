@@ -59,3 +59,15 @@ Fraction of beds occupancy per state for a single day.
 **Processing**: `src/extract_bed_occupancy_data.R`
 
 **Variables**: date,state,icu_beds_occupancy,hospital_beds_occupancy
+
+### COVID insumos e leitos
+
+Number of COVID beds and masks per state
+
+**Source**: https://covid-insumos.saude.gov.br/paineis/insumos/painel.php
+
+**Raw data**: `data/raw/lista_insumos_e_leitos.csv`
+
+**Processing**: `src/extract_insumos_data.R`
+
+**Variables**: estado,leitos_locados,leitos_uti_adulto,leitos_uti_adulto_sus,leitos_uti_adulto_nao_sus,leitos_uti_habilitados,mascaras_n95
