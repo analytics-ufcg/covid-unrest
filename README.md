@@ -47,3 +47,15 @@ Daily percentage change wrt March 2-8th.
 **Processing**: `src/extract_congestion_data.R`
 
 **Variables**: week_number,region_type,region_name,ratio_congestion,percentage_congestion_change
+
+### COVID beds occupancy rate
+
+Fraction of beds occupancy per state for a single day.
+
+**Source**: Projeto Mandacaru spreadsheet (closed)
+
+**Raw data**: `data/raw/planilha_projeto_mandacaru.xlsx`
+
+**Processing**: `src/extract_bed_occupancy_data.R`
+
+**Variables**: date,state,icu_beds_occupancy,hospital_beds_occupancy
