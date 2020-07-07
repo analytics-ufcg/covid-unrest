@@ -88,3 +88,15 @@ Transparency index by Open knowledge
 
 **Variables**: uf,date,index
 
+## Polarization 
+
+Support for extreme-right wing presidential candidate in 2018, by Datapedia (primary source is TSE).
+
+**Source**: https://eleicoes.datapedia.info 
+
+**Raw data**: `data/raw/bolsonaro-votes-cities.json`, `data/raw/bolsonaro-votes-states.json`
+
+**Processing**: `src/extract_voting_data.R` 
+
+**Variables**: state,state_code,proportion_bolsonaro or city,city_code,proportion_bolsonaro
+
