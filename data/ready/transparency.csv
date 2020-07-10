@@ -1,0 +1,309 @@
+uf,date,index
+Amazonas,2020-04-03,17
+Amazonas,2020-04-09,40
+Amazonas,2020-04-16,48
+Amazonas,2020-04-23,52
+Amazonas,2020-04-30,57
+Amazonas,2020-05-07,57
+Amazonas,2020-05-14,52
+Amazonas,2020-05-21,62
+Amazonas,2020-05-28,50
+Amazonas,2020-06-04,45
+Amazonas,2020-06-11,98
+Paraná,2020-04-03,10
+Paraná,2020-04-09,24
+Paraná,2020-04-16,74
+Paraná,2020-04-23,76
+Paraná,2020-04-30,79
+Paraná,2020-05-07,88
+Paraná,2020-05-14,90
+Paraná,2020-05-21,90
+Paraná,2020-05-28,90
+Paraná,2020-06-04,90
+Paraná,2020-06-11,98
+Acre,2020-04-03,14
+Acre,2020-04-09,14
+Acre,2020-04-16,19
+Acre,2020-04-23,38
+Acre,2020-04-30,38
+Acre,2020-05-07,55
+Acre,2020-05-14,88
+Acre,2020-05-21,88
+Acre,2020-05-28,98
+Acre,2020-06-04,93
+Acre,2020-06-11,98
+Governo Federal,2020-04-03,36
+Governo Federal,2020-04-09,52
+Governo Federal,2020-04-16,67
+Governo Federal,2020-04-23,60
+Governo Federal,2020-04-30,67
+Governo Federal,2020-05-07,57
+Governo Federal,2020-05-14,71
+Governo Federal,2020-05-21,86
+Governo Federal,2020-05-28,86
+Governo Federal,2020-06-04,90
+Governo Federal,2020-06-11,95
+Paraíba,2020-04-03,10
+Paraíba,2020-04-09,40
+Paraíba,2020-04-16,43
+Paraíba,2020-04-23,43
+Paraíba,2020-04-30,81
+Paraíba,2020-05-07,76
+Paraíba,2020-05-14,86
+Paraíba,2020-05-21,86
+Paraíba,2020-05-28,76
+Paraíba,2020-06-04,76
+Paraíba,2020-06-11,81
+Santa Catarina,2020-04-03,10
+Santa Catarina,2020-04-09,17
+Santa Catarina,2020-04-16,52
+Santa Catarina,2020-04-23,55
+Santa Catarina,2020-04-30,48
+Santa Catarina,2020-05-07,48
+Santa Catarina,2020-05-14,48
+Santa Catarina,2020-05-21,88
+Santa Catarina,2020-05-28,95
+Santa Catarina,2020-06-04,90
+Santa Catarina,2020-06-11,95
+Rio Grande do Sul,2020-04-03,36
+Rio Grande do Sul,2020-04-09,55
+Rio Grande do Sul,2020-04-16,55
+Rio Grande do Sul,2020-04-23,60
+Rio Grande do Sul,2020-04-30,55
+Rio Grande do Sul,2020-05-07,55
+Rio Grande do Sul,2020-05-14,55
+Rio Grande do Sul,2020-05-21,55
+Rio Grande do Sul,2020-05-28,76
+Rio Grande do Sul,2020-06-04,95
+Rio Grande do Sul,2020-06-11,100
+Mato Grosso do Sul,2020-04-03,45
+Mato Grosso do Sul,2020-04-09,43
+Mato Grosso do Sul,2020-04-16,43
+Mato Grosso do Sul,2020-04-23,43
+Mato Grosso do Sul,2020-04-30,43
+Mato Grosso do Sul,2020-05-07,43
+Mato Grosso do Sul,2020-05-14,71
+Mato Grosso do Sul,2020-05-21,31
+Mato Grosso do Sul,2020-05-28,90
+Mato Grosso do Sul,2020-06-04,88
+Mato Grosso do Sul,2020-06-11,88
+Pará,2020-04-03,0
+Pará,2020-04-09,0
+Pará,2020-04-16,40
+Pará,2020-04-23,43
+Pará,2020-04-30,48
+Pará,2020-05-07,62
+Pará,2020-05-14,86
+Pará,2020-05-21,93
+Pará,2020-05-28,93
+Pará,2020-06-04,93
+Pará,2020-06-11,93
+Alagoas,2020-04-03,33
+Alagoas,2020-04-09,31
+Alagoas,2020-04-16,36
+Alagoas,2020-04-23,40
+Alagoas,2020-04-30,60
+Alagoas,2020-05-07,74
+Alagoas,2020-05-14,98
+Alagoas,2020-05-21,98
+Alagoas,2020-05-28,98
+Alagoas,2020-06-04,98
+Alagoas,2020-06-11,98
+Amapá,2020-04-03,10
+Amapá,2020-04-09,10
+Amapá,2020-04-16,67
+Amapá,2020-04-23,69
+Amapá,2020-04-30,86
+Amapá,2020-05-07,88
+Amapá,2020-05-14,93
+Amapá,2020-05-21,93
+Amapá,2020-05-28,93
+Amapá,2020-06-04,93
+Amapá,2020-06-11,93
+São Paulo,2020-04-03,31
+São Paulo,2020-04-09,69
+São Paulo,2020-04-16,62
+São Paulo,2020-04-23,64
+São Paulo,2020-04-30,67
+São Paulo,2020-05-07,64
+São Paulo,2020-05-14,69
+São Paulo,2020-05-21,67
+São Paulo,2020-05-28,67
+São Paulo,2020-06-04,67
+São Paulo,2020-06-11,67
+Goiás,2020-04-03,14
+Goiás,2020-04-09,19
+Goiás,2020-04-16,19
+Goiás,2020-04-23,83
+Goiás,2020-04-30,86
+Goiás,2020-05-07,86
+Goiás,2020-05-14,90
+Goiás,2020-05-21,100
+Goiás,2020-05-28,100
+Goiás,2020-06-04,100
+Goiás,2020-06-11,100
+Roraima,2020-04-03,40
+Roraima,2020-04-09,40
+Roraima,2020-04-16,40
+Roraima,2020-04-23,40
+Roraima,2020-04-30,40
+Roraima,2020-05-07,40
+Roraima,2020-05-14,43
+Roraima,2020-05-21,48
+Roraima,2020-05-28,45
+Roraima,2020-06-04,50
+Roraima,2020-06-11,50
+Minas Gerais,2020-04-03,48
+Minas Gerais,2020-04-09,48
+Minas Gerais,2020-04-16,52
+Minas Gerais,2020-04-23,52
+Minas Gerais,2020-04-30,88
+Minas Gerais,2020-05-07,88
+Minas Gerais,2020-05-14,90
+Minas Gerais,2020-05-21,100
+Minas Gerais,2020-05-28,100
+Minas Gerais,2020-06-04,100
+Minas Gerais,2020-06-11,100
+Rondônia,2020-04-03,0
+Rondônia,2020-04-09,38
+Rondônia,2020-04-16,43
+Rondônia,2020-04-23,90
+Rondônia,2020-04-30,98
+Rondônia,2020-05-07,98
+Rondônia,2020-05-14,98
+Rondônia,2020-05-21,93
+Rondônia,2020-05-28,100
+Rondônia,2020-06-04,100
+Rondônia,2020-06-11,100
+Distrito Federal,2020-04-03,21
+Distrito Federal,2020-04-09,26
+Distrito Federal,2020-04-16,29
+Distrito Federal,2020-04-23,81
+Distrito Federal,2020-04-30,81
+Distrito Federal,2020-05-07,86
+Distrito Federal,2020-05-14,86
+Distrito Federal,2020-05-21,93
+Distrito Federal,2020-05-28,100
+Distrito Federal,2020-06-04,95
+Distrito Federal,2020-06-11,95
+Piauí,2020-04-03,21
+Piauí,2020-04-09,29
+Piauí,2020-04-16,71
+Piauí,2020-04-23,79
+Piauí,2020-04-30,76
+Piauí,2020-05-07,81
+Piauí,2020-05-14,81
+Piauí,2020-05-21,81
+Piauí,2020-05-28,81
+Piauí,2020-06-04,81
+Piauí,2020-06-11,81
+Sergipe,2020-04-03,10
+Sergipe,2020-04-09,12
+Sergipe,2020-04-16,21
+Sergipe,2020-04-23,43
+Sergipe,2020-04-30,45
+Sergipe,2020-05-07,60
+Sergipe,2020-05-14,60
+Sergipe,2020-05-21,86
+Sergipe,2020-05-28,86
+Sergipe,2020-06-04,86
+Sergipe,2020-06-11,86
+Maranhão,2020-04-03,45
+Maranhão,2020-04-09,71
+Maranhão,2020-04-16,74
+Maranhão,2020-04-23,79
+Maranhão,2020-04-30,79
+Maranhão,2020-05-07,79
+Maranhão,2020-05-14,79
+Maranhão,2020-05-21,79
+Maranhão,2020-05-28,79
+Maranhão,2020-06-04,79
+Maranhão,2020-06-11,79
+Pernambuco,2020-04-03,81
+Pernambuco,2020-04-09,90
+Pernambuco,2020-04-16,95
+Pernambuco,2020-04-23,98
+Pernambuco,2020-04-30,98
+Pernambuco,2020-05-07,98
+Pernambuco,2020-05-14,98
+Pernambuco,2020-05-21,98
+Pernambuco,2020-05-28,98
+Pernambuco,2020-06-04,98
+Pernambuco,2020-06-11,98
+Mato Grosso,2020-04-03,31
+Mato Grosso,2020-04-09,43
+Mato Grosso,2020-04-16,43
+Mato Grosso,2020-04-23,45
+Mato Grosso,2020-04-30,45
+Mato Grosso,2020-05-07,45
+Mato Grosso,2020-05-14,45
+Mato Grosso,2020-05-21,45
+Mato Grosso,2020-05-28,45
+Mato Grosso,2020-06-04,45
+Mato Grosso,2020-06-11,45
+Rio de Janeiro,2020-04-03,64
+Rio de Janeiro,2020-04-09,62
+Rio de Janeiro,2020-04-16,74
+Rio de Janeiro,2020-04-23,79
+Rio de Janeiro,2020-04-30,79
+Rio de Janeiro,2020-05-07,76
+Rio de Janeiro,2020-05-14,76
+Rio de Janeiro,2020-05-21,76
+Rio de Janeiro,2020-05-28,79
+Rio de Janeiro,2020-06-04,79
+Rio de Janeiro,2020-06-11,79
+Ceará,2020-04-03,69
+Ceará,2020-04-09,60
+Ceará,2020-04-16,95
+Ceará,2020-04-23,95
+Ceará,2020-04-30,95
+Ceará,2020-05-07,90
+Ceará,2020-05-14,95
+Ceará,2020-05-21,100
+Ceará,2020-05-28,100
+Ceará,2020-06-04,100
+Ceará,2020-06-11,98
+Espírito Santo,2020-04-03,10
+Espírito Santo,2020-04-09,10
+Espírito Santo,2020-04-16,93
+Espírito Santo,2020-04-23,93
+Espírito Santo,2020-04-30,93
+Espírito Santo,2020-05-07,98
+Espírito Santo,2020-05-14,98
+Espírito Santo,2020-05-21,98
+Espírito Santo,2020-05-28,98
+Espírito Santo,2020-06-04,98
+Espírito Santo,2020-06-11,93
+Tocantins,2020-04-03,50
+Tocantins,2020-04-09,48
+Tocantins,2020-04-16,45
+Tocantins,2020-04-23,45
+Tocantins,2020-04-30,50
+Tocantins,2020-05-07,45
+Tocantins,2020-05-14,45
+Tocantins,2020-05-21,40
+Tocantins,2020-05-28,67
+Tocantins,2020-06-04,67
+Tocantins,2020-06-11,62
+Rio Grande do Norte,2020-04-03,29
+Rio Grande do Norte,2020-04-09,60
+Rio Grande do Norte,2020-04-16,67
+Rio Grande do Norte,2020-04-23,67
+Rio Grande do Norte,2020-04-30,74
+Rio Grande do Norte,2020-05-07,93
+Rio Grande do Norte,2020-05-14,95
+Rio Grande do Norte,2020-05-21,98
+Rio Grande do Norte,2020-05-28,98
+Rio Grande do Norte,2020-06-04,98
+Rio Grande do Norte,2020-06-11,88
+Bahia,2020-04-03,33
+Bahia,2020-04-09,33
+Bahia,2020-04-16,33
+Bahia,2020-04-23,52
+Bahia,2020-04-30,55
+Bahia,2020-05-07,55
+Bahia,2020-05-14,55
+Bahia,2020-05-21,55
+Bahia,2020-05-28,55
+Bahia,2020-06-04,55
+Bahia,2020-06-11,45

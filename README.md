@@ -6,6 +6,8 @@ Data repo about this relationship.
 
 Type and details [here](https://docs.google.com/spreadsheets/d/1uqR7Et1E2caMko_nzO1CZFLfgGMHBeDs2rubWdSOx0g/edit?usp=sharing).
 
+=== 
+
 ### Covid data
 
 **Source**: https://covid.saude.gov.br/ 
@@ -25,6 +27,32 @@ Type and details [here](https://docs.google.com/spreadsheets/d/1uqR7Et1E2caMko_n
 **Processing**: `src/extract_cartorio_data.R`
 
 **Variables**: state,epidemiological_week_2020,first_day_epiweek_2020,deaths_covid19_2020,deaths_other_respiratory_2019,deaths_other_respiratory_2020,deaths_others_2019,deaths_others_2020,deaths_total_2019,deaths_total_2020,deaths_total_dif,new_deaths_covid19_2020,new_deaths_other_respiratory_2019,new_deaths_other_respiratory_2020,new_deaths_others_2019,new_deaths_others_2020,new_deaths_total_2019,new_deaths_total_2020,new_deaths_total_dif
+
+### COVID beds occupancy rate
+
+Fraction of beds occupancy per state for a single day.
+
+**Source**: Projeto Mandacaru spreadsheet (closed)
+
+**Raw data**: `data/raw/planilha_projeto_mandacaru.xlsx`
+
+**Processing**: `src/extract_bed_occupancy_data.R`
+
+**Variables**: date,state,icu_beds_occupancy,hospital_beds_occupancy
+
+### COVID insumos e leitos
+
+Number of COVID beds and masks per state
+
+**Source**: https://covid-insumos.saude.gov.br/paineis/insumos/painel.php
+
+**Raw data**: `data/raw/lista_insumos_e_leitos.csv`
+
+**Processing**: `src/extract_insumos_data.R`
+
+**Variables**: estado,leitos_locados,leitos_uti_adulto,leitos_uti_adulto_sus,leitos_uti_adulto_nao_sus,leitos_uti_habilitados,mascaras_n95
+
+===
 
 ### Restrictiveness of gov response
 
@@ -48,14 +76,27 @@ Daily percentage change wrt March 2-8th.
 
 **Variables**: week_number,region_type,region_name,ratio_congestion,percentage_congestion_change
 
-### COVID beds occupancy rate
+## Governmental Transparency on Covid Data
 
-Fraction of beds occupancy per state for a single day.
+Transparency index by Open knowledge
 
-**Source**: Projeto Mandacaru spreadsheet (closed)
+**Source**: https://transparenciacovid19.ok.org.br/ 
 
-**Raw data**: `data/raw/planilha_projeto_mandacaru.xlsx`
+**Raw data**: `data/raw/ok-covid-transparency.csv`
 
-**Processing**: `src/extract_bed_occupancy_data.R`
+**Processing**: `src/extract_transparency_data.R`
 
-**Variables**: date,state,icu_beds_occupancy,hospital_beds_occupancy
+**Variables**: uf,date,index
+
+## Polarization 
+
+Support for extreme-right wing presidential candidate in 2018, by Datapedia (primary source is TSE).
+
+**Source**: https://eleicoes.datapedia.info 
+
+**Raw data**: `data/raw/bolsonaro-votes-cities.json`, `data/raw/bolsonaro-votes-states.json`
+
+**Processing**: `src/extract_voting_data.R` 
+
+**Variables**: state,state_code,proportion_bolsonaro or city,city_code,proportion_bolsonaro
+
