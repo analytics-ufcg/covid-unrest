@@ -16,7 +16,7 @@ leitos <- read_csv(here("data", "raw", "Leitos_de_UTI_em_2019.csv"),
 medicos <- read_csv(here("data", "raw", "Medicos_por_municipio_2019.csv")) %>%
   select(estado = Nome_Estado, cod_municipio_ibge = Codigo_Municipio,
          nome_municipio = Nome_municipio, regiao = GR, populacao = Pop_Total,
-         meditos_total = Total_Medicos,
+         medicos_total = Total_Medicos,
          medicos_sus = Medicos_SUS,
          medicos_100k_hab = Medicos_100mil_hab_Ind,
          medicos_sus_100k_hab = Medicos_SUS_100mil_hab_Ind)

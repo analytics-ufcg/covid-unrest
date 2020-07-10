@@ -1,4 +1,4 @@
-estado,cod_municipio_ibge,nome_municipio,regiao,populacao,leitos_uti_total,leitos_uti_100k_hab,leitos_uti_sus_total,leitos_uti_sus_100k_hab,meditos_total,medicos_sus,medicos_100k_hab,medicos_sus_100k_hab,enfermeiros_total,enfermeiros_sus,enfermeiros_100k_hab,enfermeiros_sus_100k_hab
+estado,cod_municipio_ibge,nome_municipio,regiao,populacao,leitos_uti_total,leitos_uti_100k_hab,leitos_uti_sus_total,leitos_uti_sus_100k_hab,medicos_total,medicos_sus,medicos_100k_hab,medicos_sus_100k_hab,enfermeiros_total,enfermeiros_sus,enfermeiros_100k_hab,enfermeiros_sus_100k_hab
 Goiás,5200050,Abadia de Goiás,Centro-Oeste,8773,0,0,0,0,16,16,182.37774991451,182.37774991451,10,10,113.986093696569,113.986093696569
 Minas Gerais,3100104,Abadia dos Dourados,Sudeste,6989,0,0,0,0,14,14,200.314780369151,200.314780369152,4,4,57.2327943911861,57.2327943911861
 Goiás,5200100,Abadiânia,Centro-Oeste,20042,0,0,0,0,16,16,79.8323520606726,79.8323520606726,19,18,94.8009180720487,89.8113960682567
