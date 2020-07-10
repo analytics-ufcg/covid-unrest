@@ -52,6 +52,16 @@ Number of COVID beds and masks per state
 
 **Variables**: estado,leitos_locados,leitos_uti_adulto,leitos_uti_adulto_sus,leitos_uti_adulto_nao_sus,leitos_uti_habilitados,mascaras_n95
 
+### IBGE ICU beds, physicians and nurses
+
+Number of ICU beds, physicians and nurses in 2019
+
+**Raw data**: `data/ready/Leitos_de_UTI_em_2019.csv`, `data/ready/Medicos_por_municipio_2019.csv`, `data/ready/Enfermeiros_em_2019.csv`
+
+**Processing**: `src/extract_ibge_saude_data.R`
+
+**Variables**: estado,cod_municipio_ibge,nome_municipio,regiao,populacao,leitos_uti_total,leitos_uti_100k_hab,leitos_uti_sus_total,leitos_uti_sus_100k_hab,medicos_total,medicos_sus,medicos_100k_hab,medicos_sus_100k_hab,enfermeiros_total,enfermeiros_sus,enfermeiros_100k_hab,enfermeiros_sus_100k_hab
+
 ===
 
 ### Restrictiveness of gov response
