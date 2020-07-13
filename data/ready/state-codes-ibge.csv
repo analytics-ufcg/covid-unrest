@@ -1,0 +1,28 @@
+uf_code,uf_name,uf_sigla,regiao_code,regiao_sigla,regiao_name
+11,Rondônia,RO,1,N,Norte
+12,Acre,AC,1,N,Norte
+13,Amazonas,AM,1,N,Norte
+14,Roraima,RR,1,N,Norte
+15,Pará,PA,1,N,Norte
+16,Amapá,AP,1,N,Norte
+17,Tocantins,TO,1,N,Norte
+21,Maranhão,MA,2,NE,Nordeste
+22,Piauí,PI,2,NE,Nordeste
+23,Ceará,CE,2,NE,Nordeste
+24,Rio Grande do Norte,RN,2,NE,Nordeste
+25,Paraíba,PB,2,NE,Nordeste
+26,Pernambuco,PE,2,NE,Nordeste
+27,Alagoas,AL,2,NE,Nordeste
+28,Sergipe,SE,2,NE,Nordeste
+29,Bahia,BA,2,NE,Nordeste
+31,Minas Gerais,MG,3,SE,Sudeste
+32,Espírito Santo,ES,3,SE,Sudeste
+33,Rio de Janeiro,RJ,3,SE,Sudeste
+35,São Paulo,SP,3,SE,Sudeste
+41,Paraná,PR,4,S,Sul
+42,Santa Catarina,SC,4,S,Sul
+43,Rio Grande do Sul,RS,4,S,Sul
+50,Mato Grosso do Sul,MS,5,CO,Centro-Oeste
+51,Mato Grosso,MT,5,CO,Centro-Oeste
+52,Goiás,GO,5,CO,Centro-Oeste
+53,Distrito Federal,DF,5,CO,Centro-Oeste
