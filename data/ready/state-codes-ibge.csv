@@ -1,28 +1,28 @@
-uf_code,uf_name,uf_sigla,regiao_code,regiao_sigla,regiao_name
-11,Rondônia,RO,1,N,Norte
-12,Acre,AC,1,N,Norte
-13,Amazonas,AM,1,N,Norte
-14,Roraima,RR,1,N,Norte
-15,Pará,PA,1,N,Norte
-16,Amapá,AP,1,N,Norte
-17,Tocantins,TO,1,N,Norte
-21,Maranhão,MA,2,NE,Nordeste
-22,Piauí,PI,2,NE,Nordeste
-23,Ceará,CE,2,NE,Nordeste
-24,Rio Grande do Norte,RN,2,NE,Nordeste
-25,Paraíba,PB,2,NE,Nordeste
-26,Pernambuco,PE,2,NE,Nordeste
-27,Alagoas,AL,2,NE,Nordeste
-28,Sergipe,SE,2,NE,Nordeste
-29,Bahia,BA,2,NE,Nordeste
-31,Minas Gerais,MG,3,SE,Sudeste
-32,Espírito Santo,ES,3,SE,Sudeste
-33,Rio de Janeiro,RJ,3,SE,Sudeste
-35,São Paulo,SP,3,SE,Sudeste
-41,Paraná,PR,4,S,Sul
-42,Santa Catarina,SC,4,S,Sul
-43,Rio Grande do Sul,RS,4,S,Sul
-50,Mato Grosso do Sul,MS,5,CO,Centro-Oeste
-51,Mato Grosso,MT,5,CO,Centro-Oeste
-52,Goiás,GO,5,CO,Centro-Oeste
-53,Distrito Federal,DF,5,CO,Centro-Oeste
+uf_sigla,uf_code,regiao_code,regiao_sigla,regiao_name,population2019
+AC,12,1,N,Norte,881935
+AL,27,2,NE,Nordeste,3337357
+AM,13,1,N,Norte,4144597
+AP,16,1,N,Norte,845731
+BA,29,2,NE,Nordeste,14873064
+CE,23,2,NE,Nordeste,9132078
+DF,53,5,CO,Centro-Oeste,3015268
+ES,32,3,SE,Sudeste,4018650
+GO,52,5,CO,Centro-Oeste,7018354
+MA,21,2,NE,Nordeste,7075181
+MG,31,3,SE,Sudeste,21168791
+MS,50,5,CO,Centro-Oeste,2778986
+MT,51,5,CO,Centro-Oeste,3484466
+PA,15,1,N,Norte,8602865
+PB,25,2,NE,Nordeste,4018127
+PE,26,2,NE,Nordeste,9557071
+PI,22,2,NE,Nordeste,3273227
+PR,41,4,S,Sul,11433957
+RJ,33,3,SE,Sudeste,17264943
+RN,24,2,NE,Nordeste,3506853
+RO,11,1,N,Norte,1777225
+RR,14,1,N,Norte,605761
+RS,43,4,S,Sul,11377239
+SC,42,4,S,Sul,7164788
+SE,28,2,NE,Nordeste,2298696
+SP,35,3,SE,Sudeste,45919049
+TO,17,1,N,Norte,1572866

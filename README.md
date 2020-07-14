@@ -124,3 +124,15 @@ Number of NGOs per state.
 **Variables for cities**: uf,ngo_count,populacao_tcu2019,uf_code,uf_name,municipio_code_short,municipio_code,municipio_name,regiao_code,regiao_sigla,regiao_name,ngo_1k_hab
 
 **Variables for states**: uf,ngo_count,uf_code,uf_name,regiao_code,regiao_sigla,regiao_name
+
+
+## Vulnerable Population
+
+**Source**: [Brasil.io](http://www.portaltransparencia.gov.br/pagina-interna/603519-download-de-dados-auxilio-emergencial)
+
+
+## Inflation Data
+
+**Source**: [Sidra, from IBGE](https://sidra.ibge.gov.br/tabela/7060#/n1/all/n7/all/n6/all/v/69/p/202006/c315/all/d/v69%202/l/,p+t+v,c315/resultado)
+
+**Variables**: ipca_acumulado, uf_sigla, uf_code, municipio_code5, municipio_name, population2019, municipio_code6, municipio_code, regiao_code, regiao_sigla, regiao_name
