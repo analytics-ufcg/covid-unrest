@@ -6,7 +6,7 @@ Data repo about this relationship.
 
 Type and details [here](https://docs.google.com/spreadsheets/d/1uqR7Et1E2caMko_nzO1CZFLfgGMHBeDs2rubWdSOx0g/edit?usp=sharing).
 
-=== 
+
 
 ### Covid data
 
@@ -110,3 +110,17 @@ Support for extreme-right wing presidential candidate in 2018, by Datapedia (pri
 
 **Variables**: state,state_code,proportion_bolsonaro or city,city_code,proportion_bolsonaro
 
+
+## Social Capital
+
+Number of NGOs per state. 
+
+**Source**: Receita Federal
+
+**Raw data**: `data/raw/empresas-classe-94308.csv.zip`
+
+**Processing**: `src/extract_ngo_data.R` 
+
+**Variables for cities**: uf,ngo_count,populacao_tcu2019,uf_code,uf_name,municipio_code_short,municipio_code,municipio_name,regiao_code,regiao_sigla,regiao_name,ngo_1k_hab
+
+**Variables for states**: uf,ngo_count,uf_code,uf_name,regiao_code,regiao_sigla,regiao_name

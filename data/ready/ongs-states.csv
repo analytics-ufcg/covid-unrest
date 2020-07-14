@@ -1,0 +1,28 @@
+uf,ngo_count,uf_code,uf_name,regiao_code,regiao_sigla,regiao_name
+AC,2627,12,Acre,1,N,Norte
+AL,8776,27,Alagoas,2,NE,Nordeste
+AM,8415,13,Amazonas,1,N,Norte
+AP,2549,16,Amapá,1,N,Norte
+BA,48837,29,Bahia,2,NE,Nordeste
+CE,32071,23,Ceará,2,NE,Nordeste
+DF,10189,53,Distrito Federal,5,CO,Centro-Oeste
+ES,9999,32,Espírito Santo,3,SE,Sudeste
+GO,14143,52,Goiás,5,CO,Centro-Oeste
+MA,34464,21,Maranhão,2,NE,Nordeste
+MG,57709,31,Minas Gerais,3,SE,Sudeste
+MS,7432,50,Mato Grosso do Sul,5,CO,Centro-Oeste
+MT,10749,51,Mato Grosso,5,CO,Centro-Oeste
+PA,21968,15,Pará,1,N,Norte
+PB,14817,25,Paraíba,2,NE,Nordeste
+PE,23918,26,Pernambuco,2,NE,Nordeste
+PI,16326,22,Piauí,2,NE,Nordeste
+PR,38460,41,Paraná,4,S,Sul
+RJ,34843,33,Rio de Janeiro,3,SE,Sudeste
+RN,9283,24,Rio Grande do Norte,2,NE,Nordeste
+RO,7290,11,Rondônia,1,N,Norte
+RR,1820,14,Roraima,1,N,Norte
+RS,42749,43,Rio Grande do Sul,4,S,Sul
+SC,35870,42,Santa Catarina,4,S,Sul
+SE,8411,28,Sergipe,2,NE,Nordeste
+SP,94116,35,São Paulo,3,SE,Sudeste
+TO,5937,17,Tocantins,1,N,Norte
