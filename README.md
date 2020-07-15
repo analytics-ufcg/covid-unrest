@@ -128,10 +128,18 @@ Number of NGOs per state.
 
 ## Vulnerable Population
 
+Count and proportion of population receiving Auxílio Emergencial per state and city.
+
 **Source**: [Brasil.io](http://www.portaltransparencia.gov.br/pagina-interna/603519-download-de-dados-auxilio-emergencial)
+
+**Variables for cities**: municipio_code,vulnerable_count,uf_sigla,uf_code,municipio_code5,municipio_name,population2019,municipio_code6,regiao_code,regiao_sigla,regiao_name,vulnerable_pro
+
+**Variables for states**: uf,vulnerable_count,uf_code,regiao_code,regiao_sigla,regiao_name,population2019,vulnerable_prop
 
 
 ## Inflation Data
+
+Accumulated IPCA between jan and july 2020 for the urban regions IBGE follows. 
 
 **Source**: [Sidra, from IBGE](https://sidra.ibge.gov.br/tabela/7060#/n1/all/n7/all/n6/all/v/69/p/202006/c315/all/d/v69%202/l/,p+t+v,c315/resultado)
 
