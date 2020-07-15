@@ -12,11 +12,11 @@ Type and details [here](https://docs.google.com/spreadsheets/d/1uqR7Et1E2caMko_n
 
 **Source**: https://covid.saude.gov.br/ 
 
-**Raw data**: `data/raw/HIST_PAINEL_COVIDBR_25jun2020.xlsx`
+**Raw data**: `data/raw/HIST_PAINEL_COVIDBR_30jun2020.xlsx`
 
 **Processing**: `src/extract_covid_data.R`
 
-**Variables**: regiao,estado,coduf,data,semanaEpi,populacaoTCU2019,casosAcumulado,casosNovos,obitosAcumulado,obitosNovos,incidencia100k,mortalidade100k
+**Variables**: regiao,estado,municipio,cod_uf,cod_municipio,cod_regiao_saude,nome_regiao_saude,data,semana_epi,populacao_tcu2019,casos_acumulado,casos_novos,obitos_acumulado,obitos_novos,interior_metropolitana,incidencia100k,mortalidade100k
 
 ### Excess/SARS deaths data
 
