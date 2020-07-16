@@ -1,0 +1,162 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(hrbrthemes)
+theme_set(theme_ipsum_rc())
+```
+
+```{r}
+acled = read_csv2(here::here("data/ready/Igarape ACLED data July 9.csv"), 
+                  col_types = "cccdd", 
+                  locale = locale(decimal_mark = ","))
+```
+
+```{r}
+violence = acled %>% 
+  group_by(regiao, uf_name) %>% 
+  summarise(`jan-mar` = sum(`jan-mar`), 
+            `mar-jun` = sum(`mar-jun`)) %>% 
+  mutate(change = `mar-jun` / `jan-mar` - 1) %>% 
+  ungroup()
+```
+
+```{r}
+violence %>% 
+  ggplot(aes(x = `jan-mar`, y = `mar-jun`, color = regiao)) + 
+  facet_wrap(~ regiao) + 
+  geom_abline(linetype = "dashed", color = "grey") + 
+  geom_point(show.legend = F) + 
+  labs(title = "Violence incidents ")
+```
+
+
+```{r}
+violence %>% 
+  ggplot(aes(x = `jan-mar`, y = change, color = regiao)) + 
+  facet_wrap(~ regiao) +
+  geom_hline(yintercept = 0, color = "grey", size = .7) + 
+  geom_col(show.legend = F, width = .1, alpha = .1) + 
+  geom_point(show.legend = F) + 
+  scale_y_percent() + 
+  labs(title = "Violent episodes before/after pandemy", 
+       subtitle = "Points are states", 
+       y = "Change after pandemic", 
+       x = "Episodes in jan-mar")
+```
+
+```{r}
+violence %>% 
+  ggplot(aes(x = reorder(uf_name, change), y = change, color = regiao)) + 
+  geom_col(show.legend = F, width = .1) + 
+  geom_point() + 
+  scale_y_percent() + 
+  coord_flip() + 
+  labs(title = "Change in violence after pandemic", 
+       y = "Change after pandemic", 
+       color = "Region",
+       x = "") + 
+  scale_color_brewer(palette = "Set2")
+
+violence %>% 
+  ggplot(aes(x = reorder(uf_name, change), y = change, color = regiao)) + 
+  geom_col(show.legend = F, width = .1) + 
+  geom_point() + 
+  geom_point(aes(size = `mar-jun`), color = "grey", alpha = .5) +
+  geom_point(aes(y = 0, size = `jan-mar`), color = "grey", alpha = .35) + 
+  scale_y_percent() + 
+  coord_flip() + 
+  labs(title = "Change in violence after pandemic", 
+       subtitle = "Grey points show episode counts before/after",
+       y = "Change after pandemic", 
+       color = "Region",
+       size = "Episode counts",
+       x = "") + 
+  scale_color_brewer(palette = "Set1")
+
+
+violence %>% 
+  ggplot(aes(x = reorder(uf_name, change), y = change, color = regiao)) + 
+  geom_col(show.legend = F, width = .1) + 
+  geom_point(aes(size = `mar-jun`)) + 
+  # geom_point(aes(size = `mar-jun`), color = "grey", alpha = .5) +
+  geom_point(aes(y = 0, size = `jan-mar`), color = "grey", alpha = .5) + 
+  scale_y_percent() + 
+  coord_flip() + 
+  labs(title = "Change in violence after pandemic", 
+       subtitle = "Grey points show episode counts before pandemic",
+       y = "Change after pandemic", 
+       color = "Region",
+       size = "Episode counts",
+       x = "") + 
+  scale_color_brewer(palette = "Set2")
+
+ggsave(here::here("figs", "violence_change-states.png"), width = 8, height = 8)
+```
+
+
+```{r}
+stringency = read_csv(here::here("data/ready/measures-stringency.csv"), 
+                      col_types = "cccDd")
+
+states = jsonlite::fromJSON("https://servicodados.ibge.gov.br/api/v1/localidades/estados", flatten = T) %>% 
+  janitor::clean_names()
+
+
+stringency = stringency %>%
+  filter(city_code == "STATE_GOV") %>% 
+  left_join(states, by = c("uf" = "sigla")) %>% 
+  select(-city_name, -city_code) %>% 
+  group_by(uf,nome, regiao_sigla) %>% 
+  summarise(stringency = quantile(stringency_index, .75)) %>% 
+  ungroup()
+
+stringency_states = stringency %>% 
+  left_join(violence, by = c("nome" = "uf_name"))
+```
+
+```{r}
+stringency_states %>% 
+  ggplot(aes(x = stringency, y = change, color = regiao)) + 
+  geom_point(show.legend = F, size = 3, alpha = .8) + 
+  scale_y_percent(limits = c(-.6, .6)) + 
+  labs(
+    title = "Stringency of gov. measures vs unrest", 
+    subtitle = "Points are states", 
+    x = "75 percentile of stringency index jan-may", 
+    y = "Change in violent episodes after pandemic"
+  ) + 
+  scale_color_brewer(palette = "Set2")
+
+ggsave(
+  here::here("figs", "violence_stringency-states_together.png"),
+  width = 5,
+  height = 4
+)
+```
+
+
+```{r}
+stringency_states %>% 
+  ggplot(aes(x = stringency, y = change)) + 
+  facet_wrap(~ regiao) + 
+  geom_point(show.legend = F, size = 2, alpha = .8, color = "brown") + 
+  scale_y_percent() + 
+  labs(
+    title = "Stringency of gov. measures vs unrest", 
+    subtitle = "Points are states", 
+    x = "75 percentile of stringency index jan-may", 
+    y = "Change in violent episodes after pandemic"
+  )
+
+ggsave(
+  here::here("figs", "violence_stringency-states.png"),
+  width = 6.5,
+  height = 5.5
+)
+```
+
+

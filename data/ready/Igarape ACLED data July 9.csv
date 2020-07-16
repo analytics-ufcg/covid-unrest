@@ -1,0 +1,106 @@
+﻿violence;regiao;uf_name;mar-jun;jan-mar
+Looting/property destruction;Centro-Oeste;Distrito Federal;1,00;1,00
+Looting/property destruction;Centro-Oeste;Goiás;0,50;1,00
+Looting/property destruction;Centro-Oeste;Mato Grosso;1,00;1,00
+Looting/property destruction;Centro-Oeste;Mato Grosso do Sul;17,00;4,00
+Looting/property destruction;Nordeste;Bahia;2,75;1,00
+Looting/property destruction;Nordeste;Ceará;0,75;1,33
+Looting/property destruction;Nordeste;Maranhão;0,00;0,00
+Looting/property destruction;Nordeste;Paraíba;1,25;0,33
+Looting/property destruction;Nordeste;Pernambuco;1,00;0,00
+Looting/property destruction;Nordeste;Piauí;0,25;0,00
+Looting/property destruction;Nordeste;Rio Grande do Norte;0,25;0,33
+Looting/property destruction;Norte;Amapá;0,25;0,00
+Looting/property destruction;Norte;Amazonas;0,75;0,67
+Looting/property destruction;Norte;Pará;1,00;0,67
+Looting/property destruction;Norte;Rondônia;0,00;0,00
+Looting/property destruction;Norte;Roraima;0,25;0,00
+Looting/property destruction;Norte;Tocantins;0,00;0,33
+Looting/property destruction;Sudeste;Espírito Santo;1,00;0,67
+Looting/property destruction;Sudeste;Minas Gerais;4,25;2,67
+Looting/property destruction;Sudeste;Rio de Janeiro;1,25;1,33
+Looting/property destruction;Sudeste;São Paulo;1,00;1,00
+Looting/property destruction;Sul;Paraná;5,50;2,00
+Looting/property destruction;Sul;Rio Grande do Sul;2,25;0,67
+Looting/property destruction;Sul;Santa Catarina;2,50;0,00
+Protest;Centro-Oeste;Distrito Federal;17,50;9,67
+Protest;Centro-Oeste;Goiás;3,25;1,67
+Protest;Centro-Oeste;Mato Grosso;5,50;5,33
+Protest;Centro-Oeste;Mato Grosso do Sul;5,00;6,00
+Protest;Nordeste;Alagoas;7,50;8,67
+Protest;Nordeste;Bahia;16,25;14,00
+Protest;Nordeste;Ceará;4,50;4,67
+Protest;Nordeste;Maranhão;2,50;4,00
+Protest;Nordeste;Paraíba;5,50;6,33
+Protest;Nordeste;Pernambuco;14,25;18,67
+Protest;Nordeste;Piauí;7,50;7,00
+Protest;Nordeste;Rio Grande do Norte;3,50;4,33
+Protest;Nordeste;Sergipe;2,25;3,67
+Protest;Norte;Acre;3,75;4,00
+Protest;Norte;Amapá;1,75;1,33
+Protest;Norte;Amazonas;7,75;12,33
+Protest;Norte;Pará;9,00;11,00
+Protest;Norte;Rondônia;2,50;3,00
+Protest;Norte;Roraima;3,00;4,33
+Protest;Norte;Tocantins;2,25;2,00
+Protest;Sudeste;Espírito Santo;6,50;7,33
+Protest;Sudeste;Minas Gerais;22,75;16,33
+Protest;Sudeste;Rio de Janeiro;16,50;16,00
+Protest;Sudeste;São Paulo;41,50;26,00
+Protest;Sul;Paraná;8,00;9,00
+Protest;Sul;Rio Grande do Sul;11,00;7,33
+Protest;Sul;Santa Catarina;7,75;6,67
+Riots;Centro-Oeste;Distrito Federal;0,50;0,33
+Riots;Centro-Oeste;Goiás;0,00;0,00
+Riots;Centro-Oeste;Mato Grosso;0,50;0,33
+Riots;Centro-Oeste;Mato Grosso do Sul;0,50;1,67
+Riots;Nordeste;Alagoas;4,00;8,33
+Riots;Nordeste;Bahia;3,00;2,33
+Riots;Nordeste;Ceará;1,25;4,33
+Riots;Nordeste;Maranhão;0,50;1,33
+Riots;Nordeste;Paraíba;1,25;2,00
+Riots;Nordeste;Pernambuco;0,75;5,33
+Riots;Nordeste;Piauí;2,50;3,33
+Riots;Nordeste;Rio Grande do Norte;0,50;1,00
+Riots;Nordeste;Sergipe;0,00;1,00
+Riots;Norte;Acre;0,00;0,00
+Riots;Norte;Amapá;0,00;0,67
+Riots;Norte;Amazonas;12,00;10,33
+Riots;Norte;Pará;2,25;3,00
+Riots;Norte;Rondônia;0,00;1,00
+Riots;Norte;Roraima;1,75;3,67
+Riots;Norte;Tocantins;0,25;0,67
+Riots;Sudeste;Espírito Santo;1,75;3,00
+Riots;Sudeste;Minas Gerais;0,75;2,67
+Riots;Sudeste;Rio de Janeiro;1,25;1,33
+Riots;Sudeste;São Paulo;5,00;5,67
+Riots;Sul;Paraná;1,00;0,33
+Riots;Sul;Rio Grande do Sul;0,25;0,00
+Riots;Sul;Santa Catarina;0,50;0,33
+Violence against civilians;Centro-Oeste;Distrito Federal;1,50;2,67
+Violence against civilians;Centro-Oeste;Goiás;1,00;1,00
+Violence against civilians;Centro-Oeste;Mato Grosso;10,00;12,67
+Violence against civilians;Centro-Oeste;Mato Grosso do Sul;8,25;8,33
+Violence against civilians;Nordeste;Alagoas;16,75;16,33
+Violence against civilians;Nordeste;Bahia;9,50;17,67
+Violence against civilians;Nordeste;Ceará;21,25;23,33
+Violence against civilians;Nordeste;Maranhão;2,25;5,33
+Violence against civilians;Nordeste;Paraíba;13,00;11,67
+Violence against civilians;Nordeste;Pernambuco;3,75;8,33
+Violence against civilians;Nordeste;Piauí;6,50;6,33
+Violence against civilians;Nordeste;Rio Grande do Norte;6,75;9,00
+Violence against civilians;Nordeste;Sergipe;4,00;3,00
+Violence against civilians;Norte;Acre;3,75;5,67
+Violence against civilians;Norte;Amapá;4,00;8,00
+Violence against civilians;Norte;Amazonas;21,25;29,33
+Violence against civilians;Norte;Pará;14,00;15,67
+Violence against civilians;Norte;Rondônia;2,50;3,00
+Violence against civilians;Norte;Roraima;3,50;3,00
+Violence against civilians;Norte;Tocantins;4,50;5,33
+Violence against civilians;Sudeste;Espírito Santo;7,00;6,33
+Violence against civilians;Sudeste;Minas Gerais;16,75;21,67
+Violence against civilians;Sudeste;Rio de Janeiro;7,00;10,00
+Violence against civilians;Sudeste;São Paulo;10,25;11,67
+Violence against civilians;Sul;Paraná;5,25;5,33
+Violence against civilians;Sul;Rio Grande do Sul;2,75;8,00
+Violence against civilians;Sul;Santa Catarina;3,50;7,33
