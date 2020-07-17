@@ -1,0 +1,81 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(lubridate)
+library(ggrepel)
+library(scales)
+
+#library(hrbrthemes)
+#theme_set(theme_ipsum_rc())
+```
+
+```{r}
+extract_violence_data <- function(file = "data/ready/Igarape ACLED data July 9.csv") {
+  acled = read_csv2(here::here(file),
+                    col_types = "cccdd",
+                    locale = locale(decimal_mark = ","))  
+  violence = acled %>% 
+    group_by(regiao, uf_name) %>% 
+    summarise(`jan-mar` = sum(`jan-mar`), 
+              `mar-jun` = sum(`mar-jun`)) %>% 
+    mutate(change = `mar-jun` / `jan-mar` - 1) %>% 
+    ungroup()
+  return(violence)
+}
+```
+
+
+```{r}
+violence <- extract_violence_data() %>%
+  rename(violence_change = change)
+
+state_codes <- read_csv(here::here("data/ready/ongs-states.csv"),
+                        col_types = cols()) %>%
+  select(uf, uf_name)
+
+excess_deaths <- read_csv(here::here("data/ready/cartorio-deaths-week.csv"),
+                          col_types = cols()) %>%
+  left_join(state_codes, by = c("state" = "uf"))
+```
+
+```{r}
+excess_deaths_mar_jun <- excess_deaths %>%
+  filter(between(first_day_epiweek_2020, ymd("2020-03-01"), ymd("2020-06-30"))) %>%
+  group_by(state, uf_name) %>%
+  summarise(
+    deaths_2019 = max(deaths_total_2019, na.rm = TRUE) -
+                               min(deaths_total_2019, na.rm = TRUE),
+    deaths_2020 = max(deaths_total_2020, na.rm = TRUE) -
+                               min(deaths_total_2020, na.rm = TRUE),
+    deaths_change = (deaths_2020 - deaths_2019) / deaths_2019
+  )
+```
+
+```{r}
+deaths_violence <- excess_deaths_mar_jun %>%
+  left_join(violence, by = "uf_name")
+
+p <- ggplot(deaths_violence, aes(deaths_change, violence_change,
+                                 color = regiao)) +
+  geom_hline(aes(yintercept = 0), lty = "dashed", col = "darkgray") +
+  geom_vline(aes(xintercept = 0), lty = "dashed", col = "darkgray") +
+  geom_point(show.legend = F, size = 2.5, alpha = 0.9) +
+  geom_text_repel(aes(label = state), alpha = 0.7, show.legend = F) +
+  scale_x_continuous(labels = percent) +
+  scale_y_continuous(labels = percent) +
+  scale_color_brewer(palette = "Set2") +
+  theme_minimal() +
+  labs(title = "Excess deaths 2019-2020 vs unrest",
+       x = "Change on deaths during pandemic",
+       y = "Change in violent episodes after pandemic")
+p
+ggsave(here::here("figs", "deaths_and_violence_change.png"), p,
+       width = 5, height = 4)
+
+cor(deaths_violence$deaths_change, deaths_violence$violence_change)
+```
+
