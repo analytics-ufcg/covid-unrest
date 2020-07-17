@@ -4,7 +4,7 @@ library(lubridate, quietly = TRUE, warn.conflicts = FALSE)
 library(readr, quietly = TRUE)
 library(tidyr, quietly = TRUE)
 
-# Download file at https://brasil.io/dataset/covid19/obito_cartorio/?format=csv
+# Download file at https://data.brasil.io/dataset/covid19/obito_cartorio.csv.gz
 
 load_cartorio_data <- function(file) {
   cartorio <- read_csv(file, col_types = cols(), guess_max = 10^4)
@@ -64,7 +64,7 @@ aggregate_deaths_per_epiweek <- function(cartorio_data, group_causes = TRUE,
 
 main <- function(argv = NULL) {
   input_file <- ifelse(length(argv) >= 1, argv[1],
-                                here("data", "raw", "obito_cartorio.csv"))
+                                here("data", "raw", "obito_cartorio.csv.gz"))
   output_file <- ifelse(length(argv) >= 2, argv[2],
                         here("data", "ready", "cartorio-deaths-week.csv"))
   

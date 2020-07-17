@@ -44,7 +44,7 @@ excess_deaths <- read_csv(here::here("data/ready/cartorio-deaths-week.csv"),
 
 ```{r}
 excess_deaths_mar_jun <- excess_deaths %>%
-  filter(between(first_day_epiweek_2020, ymd("2020-03-01"), ymd("2020-06-30"))) %>%
+  filter(between(first_day_epiweek_2020, ymd("2020-03-01"), ymd("2020-06-15"))) %>%
   group_by(state, uf_name) %>%
   summarise(
     deaths_2019 = max(deaths_total_2019, na.rm = TRUE) -
