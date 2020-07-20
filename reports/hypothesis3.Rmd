@@ -105,17 +105,23 @@ stringency = read_csv(here::here("data/ready/measures-stringency.csv"),
 states = jsonlite::fromJSON("https://servicodados.ibge.gov.br/api/v1/localidades/estados", flatten = T) %>% 
   janitor::clean_names()
 
+stringency_cities = stringency %>%
+  filter(city_code != "STATE_GOV") %>% 
+  group_by(uf, city_name) %>% 
+  summarise(stringency = quantile(stringency_index, .75)) 
 
-stringency = stringency %>%
+stringency_cities %>% write_csv2("stringency-cities.csv")
+
+stringency_states = stringency %>% 
   filter(city_code == "STATE_GOV") %>% 
   left_join(states, by = c("uf" = "sigla")) %>% 
   select(-city_name, -city_code) %>% 
   group_by(uf,nome, regiao_sigla) %>% 
   summarise(stringency = quantile(stringency_index, .75)) %>% 
   ungroup()
-
-stringency_states = stringency %>% 
   left_join(violence, by = c("nome" = "uf_name"))
+
+
 ```
 
 ```{r}
@@ -159,4 +165,195 @@ ggsave(
 )
 ```
 
+```{r}
+polarization_raw = read_csv(here::here("data/ready/voting-states.csv"), 
+                            col_types = "ccd") %>% 
+  mutate(key = str_to_lower(state))
+
+consolidated = stringency_states %>% 
+  mutate(key = str_to_lower(nome)) %>% 
+  left_join(polarization_raw)
+```
+
+```{r}
+consolidated %>% 
+  ggplot(aes(x = proportion_bolsonaro, y = change, color = regiao)) + 
+  geom_point(size =  3, alpha = .8) + 
+  scale_x_percent() + 
+  scale_y_percent(limits = c(-.6, .6)) + 
+  labs(
+    title = "Support for JB x unrest", 
+    subtitle = "Points are states", 
+    x = "Support for bolsonaro in 2018 (2nd turn)", 
+    y = "Change in violent episodes after pandemic"
+  ) + 
+  scale_color_brewer(palette = "Set2")
+
+ggsave(
+  here::here("figs", "violence_bolsonaro-states_together.png"),
+  width = 7,
+  height = 4
+)
+```
+
+If support for winning (Bolsonaro or not) is x, degree of consensus is $(x - (1 - x)) / (x + (1 - x)) = 2x -1$. Polarization is $1-consensus = 2(1 - x) =$
+
+```{r}
+polarization_degree = function(d){
+  winner = if_else(d > .5, d, 1-d)
+  2*(1 - winner)
+}
+
+consolidated %>% 
+  mutate(polarization = polarization_degree(proportion_bolsonaro)) %>% 
+  # mutate(regiao_sigla = if_else(regiao_sigla %in% c("N", "NE"), "N-NE", "CO-SE-S")) %>% 
+  ggplot(aes(x = polarization, y = change, color = regiao)) + 
+  geom_point(size =  3, alpha = .8) + 
+  scale_y_percent(limits = c(-.6, .6)) + 
+  labs(
+    title = "Polarization x unrest", 
+    subtitle = "Points are states", 
+    x = "Degree of polarization in 2018 presidential 2nd turn", 
+    y = "Change in violent episodes after pandemic", 
+    color = "Região"
+  ) + 
+  scale_color_brewer(palette = "Set2")
+
+ggsave(
+  here::here("figs", "violence_polarization-states_together.png"),
+  width = ,
+  height = 4
+)
+```
+
+
+```{r}
+consolidated %>% 
+  mutate(polarization = polarization_degree(proportion_bolsonaro), 
+         stringency_class = if_else(stringency > 65, "Highly stringent", "Less stringent")) %>% 
+  ggplot(aes(x = proportion_bolsonaro, y = change, color = regiao)) + 
+  facet_wrap(~ stringency_class) + 
+  geom_point(size =  3, alpha = .8) + 
+  scale_y_percent(limits = c(-.6, .6)) + 
+  labs(
+    title = "Support for JB, stringency of measures and unrest", 
+    subtitle = "Points are states", 
+    x = "Support for bolsonaro in 2018 (2nd turn)", 
+    y = "Change in violent episodes after pandemic", 
+    color = "Região"
+  ) + 
+  scale_color_brewer(palette = "Set2")
+
+ggsave(
+  here::here("figs", "violence_bolsonaro-states_together.png"),
+  width = 7,
+  height = 4.5
+)
+```
+
+```{r}
+consolidated %>%
+  mutate(
+    polarization = polarization_degree(proportion_bolsonaro),
+    stringency_class = if_else(stringency > 65, "Highly stringent", "Less stringent")
+  ) %>%   ggplot(aes(x = polarization, y = change, color = regiao)) +
+  facet_wrap( ~ stringency_class) +
+  geom_point(size =  3, alpha = .8) +
+  scale_y_percent(limits = c(-.6, .6)) +
+  labs(    title = "Polarization, stringency of measures and unrest", 
+    subtitle = "Points are states", 
+    x = "Degree of polarization in 2018 presidential 2nd turn", 
+    y = "Change in violent episodes after pandemic", 
+    color = "Região"
+  ) + 
+  scale_color_brewer(palette = "Set2")
+
+ggsave(
+  here::here("figs", "violence_polarization_stringency.png"),
+  width = 7,
+  height = 4.5
+)
+```
+
+```{r}
+vulnerables_raw = read_csv(here::here("data/ready/vulnerables-states.csv"), 
+                           col_types = "cdccccdd")
+
+consolidated = consolidated %>% 
+  left_join(vulnerables_raw)
+```
+
+```{r}
+consolidated %>% 
+  ggplot(aes(x = vulnerable_prop, y = change, color = regiao)) + 
+  geom_point(size =  3, alpha = .8) + 
+  scale_x_percent() + 
+  scale_y_percent(limits = c(-.6, .6)) + 
+  labs(
+    title = "Social vulnerability x unrest", 
+    subtitle = "Points are states", 
+    x = "% of population receiving emergency income", 
+    y = "Change in violent episodes after pandemic"
+  ) + 
+  scale_color_brewer(palette = "Set2")
+
+ggsave(
+  here::here("figs", "violence_vulnerability-states_together.png"),
+  width = 7,
+  height = 4.5
+)
+```
+
+```{r}
+consolidated %>% 
+  mutate(regiao_sigla = if_else(regiao_sigla %in% c("N", "NE"), "N-NE", "CO-SE-S")) %>%
+  ggplot(aes(x = vulnerable_prop, y = change, color = regiao)) + 
+  facet_wrap(~ regiao_sigla, scales = "free_x") + 
+  geom_point(size =  3, alpha = .8, show.legend = F) + 
+  scale_x_percent() + 
+  scale_y_percent(limits = c(-.6, .6)) + 
+  labs(
+    title = "Social vulnerability x unrest", 
+    subtitle = "Points are states", 
+    x = "Fraction of population receiving emergency income", 
+    y = "Change in violent episodes after pandemic"
+  ) + 
+  scale_color_brewer(palette = "Set2")
+
+ggsave(
+  here::here("figs", "violence_vulnerability-states_per-region.png"),
+  width = 7,
+  height = 4
+)
+```
+
+```{r}
+consolidated %>% 
+  filter(regiao_sigla %in% c("N", "NE")) %>% 
+  ggplot(aes(x = vulnerable_prop, y = change, color = regiao)) + 
+  geom_point(size =  3, alpha = .8, show.legend = F) + 
+  scale_x_percent() + 
+  scale_y_percent(limits = c(-.6, .6)) + 
+  labs(
+    title = "Social vulnerability x unrest", 
+    subtitle = "Points are states", 
+    x = "Fraction of population receiving emergency income", 
+    y = "Change in violent episodes after pandemic"
+  ) + 
+  scale_color_brewer(palette = "Set2")
+
+ggsave(
+  here::here("figs", "violence_vulnerability-states_norte-nordeste.png"),
+  width = 5,
+  height = 4
+)
+```
+
+```{r}
+consolidated %>% 
+  mutate(
+    polarization = polarization_degree(proportion_bolsonaro),
+  ) %>% 
+  write_csv2(here::here("data/ready/consolidated1.csv"))
+```
 
