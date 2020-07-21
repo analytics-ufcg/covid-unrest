@@ -1,10 +1,31 @@
 library(dplyr, quietly = TRUE, warn.conflicts = FALSE)
 library(here, quietly = TRUE)
+library(httr, quietly = TRUE)
 library(lubridate, quietly = TRUE, warn.conflicts = FALSE)
+library(purrr, quietly = TRUE)
 library(readr, quietly = TRUE)
 library(tidyr, quietly = TRUE)
 
 # Download file at https://data.brasil.io/dataset/covid19/obito_cartorio.csv.gz
+
+download_cartorio_data_page <- function(page) {
+  url <- paste0("https://brasil.io/api/dataset/covid19/obito_cartorio/data/?format=json&page=",
+               page)
+  obitos_response <- GET(url, content_type_json())
+  obitos <- content(obitos_response)$results %>%
+    bind_rows() %>%
+    mutate(date = ymd(date))
+  Sys.sleep(runif(1, 1, 3))
+  return(obitos)
+}
+
+
+download_cartorio_data <- function(pages = 1:10,
+                                   output = here("data", "raw", "obito_cartorio.csv")) {
+  obitos <- map_df(pages, download_cartorio_data_page)
+  write_csv(obitos, output)
+  return(obitos)
+}
 
 load_cartorio_data <- function(file) {
   cartorio <- read_csv(file, col_types = cols(), guess_max = 10^4)
@@ -64,7 +85,7 @@ aggregate_deaths_per_epiweek <- function(cartorio_data, group_causes = TRUE,
 
 main <- function(argv = NULL) {
   input_file <- ifelse(length(argv) >= 1, argv[1],
-                                here("data", "raw", "obito_cartorio.csv.gz"))
+                                here("data", "raw", "obito_cartorio.csv"))
   output_file <- ifelse(length(argv) >= 2, argv[2],
                         here("data", "ready", "cartorio-deaths-week.csv"))
   
