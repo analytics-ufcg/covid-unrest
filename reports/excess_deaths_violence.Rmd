@@ -3,14 +3,11 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
 library(lubridate)
 library(ggrepel)
 library(scales)
-
-#library(hrbrthemes)
-#theme_set(theme_ipsum_rc())
 ```
 
 ```{r}
