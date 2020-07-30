@@ -118,7 +118,7 @@ stringency_states = stringency %>%
   select(-city_name, -city_code) %>% 
   group_by(uf,nome, regiao_sigla) %>% 
   summarise(stringency = quantile(stringency_index, .75)) %>% 
-  ungroup()
+  ungroup() %>% 
   left_join(violence, by = c("nome" = "uf_name"))
 
 
@@ -128,6 +128,7 @@ stringency_states = stringency %>%
 stringency_states %>% 
   ggplot(aes(x = stringency, y = change, color = regiao)) + 
   geom_point(show.legend = F, size = 3, alpha = .8) + 
+  geom_text_repel(aes(label = uf), alpha = 0.7, show.legend = F) +
   scale_y_percent(limits = c(-.6, .6)) + 
   labs(
     title = "Stringency of gov. measures vs unrest", 
@@ -146,15 +147,27 @@ ggsave(
 
 
 ```{r}
-stringency_states %>% 
-  ggplot(aes(x = stringency, y = change)) + 
-  facet_wrap(~ regiao) + 
-  geom_point(show.legend = F, size = 2, alpha = .8, color = "brown") + 
-  scale_y_percent() + 
+stringency_states %>%
+  ggplot(aes(x = stringency, y = change)) +
+  facet_wrap( ~ regiao) +
+  geom_point(
+    show.legend = F,
+    size = 2,
+    alpha = .8,
+    color = "brown"
+  ) +
+  geom_text_repel(
+    aes(label = uf),
+    color = "darkgray",
+    size = 3,
+    alpha = 0.8,
+    show.legend = F
+  ) +
+  scale_y_percent() +
   labs(
-    title = "Stringency of gov. measures vs unrest", 
-    subtitle = "Points are states", 
-    x = "75 percentile of stringency index jan-may", 
+    title = "Stringency of gov. measures vs unrest",
+    subtitle = "Points are states",
+    x = "75 percentile of stringency index jan-may",
     y = "Change in violent episodes after pandemic"
   )
 
@@ -181,6 +194,13 @@ consolidated %>%
   geom_point(size =  3, alpha = .8) + 
   scale_x_percent() + 
   scale_y_percent(limits = c(-.6, .6)) + 
+  geom_text_repel(
+    aes(label = uf),
+    color = "darkgray",
+    size = 3,
+    alpha = 0.8,
+    show.legend = F
+  ) +
   labs(
     title = "Support for JB x unrest", 
     subtitle = "Points are states", 
@@ -209,6 +229,13 @@ consolidated %>%
   # mutate(regiao_sigla = if_else(regiao_sigla %in% c("N", "NE"), "N-NE", "CO-SE-S")) %>% 
   ggplot(aes(x = polarization, y = change, color = regiao)) + 
   geom_point(size =  3, alpha = .8) + 
+  geom_text_repel(
+    aes(label = uf),
+    color = "darkgray",
+    size = 3,
+    alpha = 0.8,
+    show.legend = F
+  ) + 
   scale_y_percent(limits = c(-.6, .6)) + 
   labs(
     title = "Polarization x unrest", 
@@ -234,6 +261,13 @@ consolidated %>%
   ggplot(aes(x = proportion_bolsonaro, y = change, color = regiao)) + 
   facet_wrap(~ stringency_class) + 
   geom_point(size =  3, alpha = .8) + 
+  geom_text_repel(
+    aes(label = uf),
+    color = "darkgray",
+    size = 3,
+    alpha = 0.8,
+    show.legend = F
+  ) + 
   scale_y_percent(limits = c(-.6, .6)) + 
   labs(
     title = "Support for JB, stringency of measures and unrest", 
@@ -259,6 +293,13 @@ consolidated %>%
   ) %>%   ggplot(aes(x = polarization, y = change, color = regiao)) +
   facet_wrap( ~ stringency_class) +
   geom_point(size =  3, alpha = .8) +
+  geom_text_repel(
+    aes(label = uf),
+    color = "darkgray",
+    size = 3,
+    alpha = 0.8,
+    show.legend = F
+  ) + 
   scale_y_percent(limits = c(-.6, .6)) +
   labs(    title = "Polarization, stringency of measures and unrest", 
     subtitle = "Points are states", 
@@ -287,6 +328,13 @@ consolidated = consolidated %>%
 consolidated %>% 
   ggplot(aes(x = vulnerable_prop, y = change, color = regiao)) + 
   geom_point(size =  3, alpha = .8) + 
+  geom_text_repel(
+    aes(label = uf),
+    color = "darkgray",
+    size = 3,
+    alpha = 0.8,
+    show.legend = F
+  ) + 
   scale_x_percent() + 
   scale_y_percent(limits = c(-.6, .6)) + 
   labs(
@@ -310,6 +358,13 @@ consolidated %>%
   ggplot(aes(x = vulnerable_prop, y = change, color = regiao)) + 
   facet_wrap(~ regiao_sigla, scales = "free_x") + 
   geom_point(size =  3, alpha = .8, show.legend = F) + 
+  geom_text_repel(
+    aes(label = uf),
+    color = "darkgray",
+    size = 3,
+    alpha = 0.8,
+    show.legend = F
+  ) + 
   scale_x_percent() + 
   scale_y_percent(limits = c(-.6, .6)) + 
   labs(
@@ -332,6 +387,13 @@ consolidated %>%
   filter(regiao_sigla %in% c("N", "NE")) %>% 
   ggplot(aes(x = vulnerable_prop, y = change, color = regiao)) + 
   geom_point(size =  3, alpha = .8, show.legend = F) + 
+  geom_text_repel(
+    aes(label = uf),
+    color = "darkgray",
+    size = 3,
+    alpha = 0.8,
+    show.legend = F
+  ) + 
   scale_x_percent() + 
   scale_y_percent(limits = c(-.6, .6)) + 
   labs(
