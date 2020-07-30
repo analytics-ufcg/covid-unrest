@@ -3,14 +3,11 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
 library(lubridate)
 library(ggrepel)
 library(scales)
-
-#library(hrbrthemes)
-#theme_set(theme_ipsum_rc())
 ```
 
 ```{r}
@@ -42,9 +39,38 @@ excess_deaths <- read_csv(here::here("data/ready/cartorio-deaths-week.csv"),
   left_join(state_codes, by = c("state" = "uf"))
 ```
 
+```{r, fig.width=8, fig.height=10}
+last_week_2020 <- excess_deaths %>%
+  filter(!is.na(deaths_others_2020)) %>%
+  with(max(epidemiological_week_2020))
+  
+p <- ggplot(excess_deaths) +
+  geom_line(aes(x = first_day_epiweek_2020, y = new_deaths_total_2019, col = "2019"), size = 0.8) +
+  geom_line(aes(x = first_day_epiweek_2020, y = new_deaths_total_2020, col = "2020"),
+            data = filter(cartorio_week, first_day_epiweek_2020 <= ymd("2020-06-15")),
+            size = 0.8) +
+  facet_wrap(~ state, scales = "free_y", ncol = 4) +
+  scale_x_date("Dia", date_breaks = "2 months", date_labels = "%b") +
+  scale_y_continuous("Média de óbitos por dia", limits = c(0, NA)) +
+  scale_color_brewer(palette = "Set2") +
+  labs(title = "Excess deaths by state",
+       subtitle = "New deaths per week in 2019 and 2020") +
+  theme_minimal() +
+  theme(legend.position = "top", legend.title = element_blank(),
+        panel.grid.minor = element_blank(),
+        strip.text = element_text(face = "bold"),
+        axis.title = element_blank())
+p
+
+ggsave(here::here("figs", "excess_deaths_by_state.png"), p,
+       width = 8, height = 10)
+```
+
+
+
 ```{r}
 excess_deaths_mar_jun <- excess_deaths %>%
-  filter(between(first_day_epiweek_2020, ymd("2020-03-01"), ymd("2020-06-30"))) %>%
+  filter(between(first_day_epiweek_2020, ymd("2020-03-01"), ymd("2020-06-15"))) %>%
   group_by(state, uf_name) %>%
   summarise(
     deaths_2019 = max(deaths_total_2019, na.rm = TRUE) -
