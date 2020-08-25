@@ -130,7 +130,11 @@ Number of NGOs per state.
 
 Count and proportion of population receiving Auxílio Emergencial per state and city.
 
-**Source**: [Brasil.io](http://www.portaltransparencia.gov.br/pagina-interna/603519-download-de-dados-auxilio-emergencial)
+**Source**: [Portal de Transparência do Gov. Federal](https://data.brasil.io/dataset/govbr/auxilio_emergencial.csv.gz)
+
+**Raw data** is too big to up in the repo
+
+**Processing**: src/extract_vulnerables_data.R 
 
 **Variables for cities**: municipio_code,vulnerable_count,uf_sigla,uf_code,municipio_code5,municipio_name,population2019,municipio_code6,regiao_code,regiao_sigla,regiao_name,vulnerable_pro
 
